@@ -10,6 +10,9 @@ Before running the below command, make sure you're in the project directory that
 you've just cloned!!
 
 ```bash
+> cd Paimon-Bot-By-Anto-master 
+atau kalo tidak bisa
+> cd Paimon-Bot-By-Anto
 > npm install
 > npm install bent
 > npm install ffmpeg (install ffmpeg dulu)
@@ -94,7 +97,7 @@ Fix Stuck on linux, install google chrome stable:
 * [`open-wa/wa-automate-nodejs`](https://github.com/open-wa/wa-automate-nodejs)
 * [`YogaSakti/imageToSticker`](https://github.com/YogaSakti/imageToSticker)
 * [`SomnathDas/Whatsapp-Botto-Re`](https://github.com/SomnathDas/Whatsapp-Botto-Re)
-* [`toby74/ElainaBOT`](https://github.com/toby74/ElainaBOT) 
+* [`tobyG74/ElainaBOT`](https://github.com/toby74/ElainaBOT) 
 * [THANKS FOR FOR MHANK BUBUR]
 ### Donate
 Lebih jelas Hubungi wa.me/6287811078485
