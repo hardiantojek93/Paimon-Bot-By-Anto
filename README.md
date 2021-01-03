@@ -1,24 +1,24 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/mhankbarbar/whatsapp-bot/master/media/img/Kaguya.png" width="128" height="128"/>
+<img src="http://zeksapi.herokuapp.com/api/logoaveng?text1=PAIMON&text2=BOT&apikey=zerotwo" width="128" height="128"/>
 </p>
 <p align="center">
 <a href="#"><img title="Whatsapp-Bot" src="https://img.shields.io/badge/Whatsapp Bot-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 </p>
 <p align="center">
-<a href="https://github.com/mhankbarbar"><img title="Author" src="https://img.shields.io/badge/Author-mhankbarbar-red.svg?style=for-the-badge&logo=github"></a>
+<a href="https://github.com/hardiantojek93"><img title="Author" src="https://img.shields.io/badge/Author-mhankbarbar-red.svg?style=for-the-badge&logo=github"></a>
 </p>
 <p align="center">
-<a href="https://github.com/mhankbarbar/followers"><img title="Followers" src="https://img.shields.io/github/followers/mhankbarbar?color=blue&style=flat-square"></a>
-<a href="https://github.com/mhankbarbar/whatsapp-bot/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/mhankbarbar/whatsapp-bot?color=red&style=flat-square"></a>
-<a href="https://github.com/mhankbarbar/whatsapp-bot/network/members"><img title="Forks" src="https://img.shields.io/github/forks/mhankbarbar/whatsapp-bot?color=red&style=flat-square"></a>
-<a href="https://github.com/mhankbarbar/whatsapp-bot/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/mhankbarbar/whatsapp-bot?label=Watchers&color=blue&style=flat-square"></a>
+<a href="https://github.com/hardiantojek93/followers"><img title="Followers" src="https://img.shields.io/github/followers/mhankbarbar?color=blue&style=flat-square"></a>
+<a href="https://github.com/hardiantojek93/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/mhankbarbar/whatsapp-bot?color=red&style=flat-square"></a>
+<a href="https://github.com/hardiantojek93/Paimon-Bot-By-Anto/network/members"><img title="Forks" src="https://img.shields.io/github/forks/mhankbarbar/whatsapp-bot?color=red&style=flat-square"></a>
+<a href="https://github.com/hardiantojek93/Paimon-Bot-By-Anto/watcher"><img title="Watching" src="https://img.shields.io/github/watchers/mhankbarbar/whatsapp-bot?label=Watchers&color=blue&style=flat-square"></a>
 <a href="#"><img title="UNMAINTENED" src="https://img.shields.io/badge/UNMAINTENED-YES-blue.svg"</a>
 </p>
 
 ## Clone this project
 
 ```bash
-> git clone https://github.com/MhankBarBar/whatsapp-bot
+> git clone https://github.com/Paimon-Bot-By-Anto
 ```
 
 ## Install the dependencies:
@@ -26,14 +26,16 @@ Before running the below command, make sure you're in the project directory that
 you've just cloned!!
 
 ```bash
-> npm install gify-cli -g
-> npm i
+> npm install
+> npm install bent
+> npm install ffmpeg (install ffmpeg dulu)
+> npm start
 ```
 
 ### Usage
 Before running this script, first edit [this section](https://github.com/MhankBarBar/whatsapp-bot/blob/master/msgHndlr.js#L67) with your WhatsApp number, remember your WhatsApp number!  Not a bot number, then
 ```bash
-> npm start
+> npm start or node index.js
 ```
 
 ## Features
@@ -110,4 +112,3 @@ Fix Stuck on linux, install google chrome stable:
 * [`SomnathDas/Whatsapp-Botto-Re`](https://github.com/SomnathDas/Whatsapp-Botto-Re)
 
 ### Donate
-* [`Saweria`](https://saweria.co/donate/mhankbarbar)
