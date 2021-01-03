@@ -1,52 +1,53 @@
 const { create, Client } = require('@open-wa/wa-automate')
+ const left = require('./lib/left')
 const welcome = require('./lib/welcome')
-const msgHandler = require('./msgHndlr')
+const msgHandler = require('./anto')
 const options = require('./options')
-
-const start = async (client = new Client()) => {
+const start = async (anto = new Client()) => {
         console.log('[SERVER] Server Started!')
         // Force it to keep the current session
-        client.onStateChanged((state) => {
+        anto.onStateChanged((state) => {
             console.log('[Client State]', state)
-            if (state === 'CONFLICT' || state === 'UNLAUNCHED') client.forceRefocus()
+            if (state === 'CONFLICT' || state === 'UNLAUNCHED') anto.forceRefocus()
         })
         // listening on message
-        client.onMessage((async (message) => {
-            client.getAmountOfLoadedMessages()
+        anto.onMessage((async (message) => {
+            anto.getAmountOfLoadedMessages()
             .then((msg) => {
                 if (msg >= 3000) {
-                    client.cutMsgCache()
+                    anto.cutMsgCache()
                 }
             })
-            msgHandler(client, message)
+          //  require('./anto.js')(anto, message)
+          msgHandler(anto, message)
         }))
 
-        client.onGlobalParicipantsChanged((async (heuh) => {
-            await welcome(client, heuh)
-            //left(client, heuh)
+        anto.onGlobalParicipantsChanged((async (heuh) => {
+            await welcome(anto, heuh)
+            left(anto, heuh)
             }))
         
-        client.onAddedToGroup(((chat) => {
+        anto.onAddedToGroup(((chat) => {
             let totalMem = chat.groupMetadata.participants.length
             if (totalMem < 30) { 
-            	client.sendText(chat.id, `Cih member nya cuma ${totalMem}, Kalo mau invite bot, minimal jumlah mem ada 30`).then(() => client.leaveGroup(chat.id)).then(() => client.deleteChat(chat.id))
+            	anto.sendText(chat.id, `Anooo neee anggota Grub Cuma  ${totalMem}, Invite Paimom Di lain Hari ya kak `).then(() => anto.leaveGroup(chat.id)).then(() => clantoeleteChat(chat.id))
             } else {
-                client.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *!help*`)
+                anto.sendText(chat.groupMetadata.id, `Halo warga grup *${chat.contact.name}* terimakasih sudah menginvite bot ini, untuk melihat menu silahkan kirim *!help*`)
             }
         }))
 
-        /*client.onAck((x => {
+        /*anto.onAck((x => {
             const { from, to, ack } = x
-            if (x !== 3) client.sendSeen(to)
+            if (x !== 3) anto.sendSeen(to)
         }))*/
 
         // listening on Incoming Call
-        client.onIncomingCall(( async (call) => {
-            await client.sendText(call.peerJid, 'Maaf, saya tidak bisa menerima panggilan. nelfon = block!')
-            .then(() => client.contactBlock(call.peerJid))
+        anto.onIncomingCall(( async (call) => {
+            await anto.sendText(call.peerJid, 'Maaf, saya tidak bisa menerima panggilan. nelfon = block!')
+            .then(() => anto.contactBlock(call.peerJid))
         }))
     }
 
 create(options(true, start))
-    .then(client => start(client))
+    .then(anto => start(anto))
     .catch((error) => console.log(error))
