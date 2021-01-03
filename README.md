@@ -15,7 +15,7 @@ kalo udah download ffmpeg di https://github.com/BtbN/FFmpeg-Builds/releases/down
 jika sudah taruh file Bot di C:\
 Buka CMD=KETIK windows+r lalu ketik "CMD" OR search di Laptop CMD
 TRUSS
-> cd C:\ Or C:
+> cd C:\ Or cd C:
 > cd Paimon-Bot-By-Anto-master 
 atau kalo tidak bisa
 > cd Paimon-Bot-By-Anto
