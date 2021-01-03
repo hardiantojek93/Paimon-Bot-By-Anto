@@ -97,3 +97,4 @@ Fix Stuck on linux, install google chrome stable:
 * [`toby74/ElainaBOT`](https://github.com/toby74/ElainaBOT) 
 * [THANKS FOR FOR MHANK BUBUR]
 ### Donate
+Lebih jelas Hubungi wa.me/6287811078485
