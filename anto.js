@@ -27,8 +27,8 @@ const _level = JSON.parse(fs.readFileSync('./lib/level.json'))
 const _afk = JSON.parse(fs.readFileSync('./lib/afk.json'))
 const { RemoveBgResult, removeBackgroundFromImageBase64, removeBackgroundFromImageFile } = require('remove.bg')
 // Projector //
-let pendaftar = JSON.parse(fs.readFileSync('./lib/database/user.json'))
-const left = JSON.parse(fs.readFileSync('./lib/database/left.json'))
+let pendaftar = JSON.parse(fs.readFileSync('./lib/user.json'))
+const left = JSON.parse(fs.readFileSync('./lib/left.json'))
 moment.tz.setDefault('Asia/Jakarta').locale('id')
 
 module.exports = anto = async (anto, message,rugaapi) => {
