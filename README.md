@@ -1,11 +1,4 @@
-<p align="center">
-<img src="http://zeksapi.herokuapp.com/api/logoaveng?text1=PAIMON&text2=BOT&apikey=zerotwo" width="128" height="128"/>
-</p>
-<p align="center">
-<a href="#"><img title="Whatsapp-Bot" src="https://img.shields.io/badge/Whatsapp Bot-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
-</p>
-<p align="center">
-<a href="https://github.com/hardiantojek93"><img title="Author" src="https://img.shields.io/badge/Author-mhankbarbar-red.svg?style=for-the-badge&logo=github"></a>
+
 ## Clone this project
 
 ```bash
@@ -101,5 +94,6 @@ Fix Stuck on linux, install google chrome stable:
 * [`open-wa/wa-automate-nodejs`](https://github.com/open-wa/wa-automate-nodejs)
 * [`YogaSakti/imageToSticker`](https://github.com/YogaSakti/imageToSticker)
 * [`SomnathDas/Whatsapp-Botto-Re`](https://github.com/SomnathDas/Whatsapp-Botto-Re)
-
+* [`toby74/ElainaBOT`](https: //github.com/toby74/ElainaBOT) 
+* [THANKS FOR FOR MHANK BUBUR]
 ### Donate
