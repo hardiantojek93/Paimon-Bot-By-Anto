@@ -94,6 +94,6 @@ Fix Stuck on linux, install google chrome stable:
 * [`open-wa/wa-automate-nodejs`](https://github.com/open-wa/wa-automate-nodejs)
 * [`YogaSakti/imageToSticker`](https://github.com/YogaSakti/imageToSticker)
 * [`SomnathDas/Whatsapp-Botto-Re`](https://github.com/SomnathDas/Whatsapp-Botto-Re)
-* [`toby74/ElainaBOT`](https: //github.com/toby74/ElainaBOT) 
+* [`toby74/ElainaBOT`](https://github.com/toby74/ElainaBOT) 
 * [THANKS FOR FOR MHANK BUBUR]
 ### Donate
