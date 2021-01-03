@@ -10,10 +10,10 @@ Before running the below command, make sure you're in the project directory that
 you've just cloned!!
 
 ```bash
-install Node js di PC/laptop atau RDP klean
-kalo udah download ffmpeg di https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2021-01-02-12-35/ffmpeg-n4.3.1-29-g89daac5fe2-win64-gpl-4.3.zip tutor nya ada di utara
+install Node js di PC/op atau RDP klean
+kalo udah download ffmpeg di https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2021-01-02-12-35/ffmpeg-n4.3.1-29-g89daac5fe2-win64-gpl-4.3.zip tutor nya ada di Yt mrgp35
 jika sudah taruh file Bot di C:\
-
+Buka CMD=KETIK windows+r lalu ketik "CMD" OR search di Laptop CMD
 TRUSS
 > cd C:\ Or C:
 > cd Paimon-Bot-By-Anto-master 
@@ -26,7 +26,7 @@ atau kalo tidak bisa
 ```
 
 ### Usage
-Before running this script, first edit [this section](https://github.com/MhankBarBar/whatsapp-bot/blob/master/msgHndlr.js#L67) with your WhatsApp number, remember your WhatsApp number!  Not a bot number, then
+Before running this script, first edit [this section](https://github.com/hardiantojek93/Paimon-Bot-By-Anto/blob/master/msgHndlr.js#L67) with your WhatsApp number, remember your WhatsApp number!  Not a bot number, then
 ```bash
 > npm start or node index.js
 ```
