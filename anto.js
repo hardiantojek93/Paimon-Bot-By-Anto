@@ -1210,6 +1210,9 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
                 await anto.sendGiphyAsSticker(from, 'https://media.giphy.com/media/od5H3PmEG5EVq/giphy.gif')
                 anto.sendTextWithMentions(from, '@' + janjing + ' *peyuuuk* ' + arg[1])
                 break
+          case '@6287811078485': 
+                anto.reply(from, `Ada Apa ${pushname} Manggil owner saya`, id) 
+                break
       /*  case `!nye`:
                 arg = body.trim().split('')
                 const jancuk7 = author.replace('@c.us', '')
