@@ -27,8 +27,8 @@ const _level = JSON.parse(fs.readFileSync('./lib/level.json'))
 const _afk = JSON.parse(fs.readFileSync('./lib/afk.json'))
 const { RemoveBgResult, removeBackgroundFromImageBase64, removeBackgroundFromImageFile } = require('remove.bg')
 // Projector //
-let pendaftar = JSON.parse(fs.readFileSync('./lib/user.json'))
-const left = JSON.parse(fs.readFileSync('./lib/left.json'))
+let pendaftar = JSON.parse(fs.readFileSync('./lib/database/user.json'))
+const left = JSON.parse(fs.readFileSync('./lib/database/left.json'))
 moment.tz.setDefault('Asia/Jakarta').locale('id')
 
 module.exports = anto = async (anto, message,rugaapi) => {
@@ -1210,9 +1210,6 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
                 await anto.sendGiphyAsSticker(from, 'https://media.giphy.com/media/od5H3PmEG5EVq/giphy.gif')
                 anto.sendTextWithMentions(from, '@' + janjing + ' *peyuuuk* ' + arg[1])
                 break
-          case '@6287811078485': 
-                anto.reply(from, `Ada Apa ${pushname} Manggil owner saya`, id) 
-                break
       /*  case `!nye`:
                 arg = body.trim().split('')
                 const jancuk7 = author.replace('@c.us', '')
@@ -1289,8 +1286,8 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
             const typo = tipe[Math.floor(Math.random() * (tipe.length))]
             //const rjh2 = `*Hasil Pengamatan!*\nPasangan dengan nama ${kamu} dan ${pacar}\n\n➸ Cinta : ${rpmn}\n➸ Jodoh : ${rpmn2}\n➸ Kemiripan : ${rpmn3}\n➸ Kesukaan : ${rpmn4}\n➸ Kesamaan : ${rpmn5}\n➸ Kebucinan ${rpmn6}`
             
-           await anto.sendFilefromUrl(from, pfp, 'pfp.jpg', `*User Profile* ✨️ \n\n➸ *Username: ${namae}*\n➸ *User Info: ${status}*[ *INTROGASI SUKSES* ]\n*[Nama]:${namao}*\n*[Watak]:${wtk}*\n*[Akhlak✨]:${akhlak}*\n*[Sifat]:${sft}*\n*[Hobby]:${hby}*\n*[Tipe]:${typo}*\n*[Kelebihan]:${klbh}*\n*Note*\n_ini hanya main main_`, id)
-         //  await anto.sendFilefromUrl(from, prfx, 'profile.jpg', foxt, id)
+           await anto.sendFileFromUrl(from, pfp, 'pfp.jpg', `*User Profile* ✨️ \n\n➸ *Username: ${namae}*\n➸ *User Info: ${status}*[ *INTROGASI SUKSES* ]\n*[Nama]:${namao}*\n*[Watak]:${wtk}*\n*[Akhlak✨]:${akhlak}*\n*[Sifat]:${sft}*\n*[Hobby]:${hby}*\n*[Tipe]:${typo}*\n*[Kelebihan]:${klbh}*\n*Note*\n_ini hanya main main_`, id)
+         //  await anto.sendFileFromUrl(from, prfx, 'profile.jpg', foxt, id)
           break
           case '!tutup':
 		      case '!close':
@@ -1327,7 +1324,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
                } else {
                  var pfp = pic
                }
-               await anto.sendFileFromUrl(from, pfp, 'pfp.jpg', `*User Profile* ✨️ \n\n➸ *Username: ${namae}*\n\n➸ *User Info: ${status}`)
+               await anto.sendFileFromUrl(from, pfp, 'pfp.jpg', `*User Profile* ✨️ \n\n➸ *Username: ${namae}*\n\n➸ *User Info: ${status}*`)
              } else if (quotedMsg) {
                var qmid = quotedMsgObj.sender.id
                var block = blockNumber.includes(qmid)
@@ -1818,25 +1815,17 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
                     anto.sendImage(from, './mager/magernulis√/magernulis1√.jpg', 'FarelZahra.jpg', '*Sukses✓ Nulis DiBuku ✓*\n\n*YouTube : HARDIANTO CH*\n*Instagram : @hardianto02_*\n*Twitter : -*\n*GitHub : Hardiantojek93*\n*Saweria : -*\n\n*© Powered By BOT✓*', id)
                 })
                 break
-           case '!nolis':
-           case '!nulis':
-           if(isReg(obj)) return
-           if(cekumur(cekage)) return
-           argz = body.trim().split('|')
-           if (argz.length >= 3) {
-              anto.reply(from, mess.wait, id)
-           const text = argz[1]
-           const namaewa = argz[2]
-           const kelaslu = argz[3]
-              if (textnoles.length > 500) return anto.reply(from, '*Teks1 Terlalu Panjang!*\n_Maksimal 500 huruf!_', id)
-              if (namaewa.length > 15) return anto.reply(from, '*Teks2 Terlalu Panjang!*\n_Maksimal 15 huruf!_', id)
-              if (kelaslu.length > 10) return anto.reply(from, 'Kelas Lu panjang amat')
-           const tulisan = await axios.get(`http://melodicxt.herokuapp.com/api/joki-nulis?text=${textnoles}&nama=${namaewa}&kelas=${kelaslu}&apiKey=administrator`)
-           anto.sendFilefromUrl(from, tulisan.result.result, 'tolesan.jpg', 'Hayyuk ketahuan Emak', id)
-           } else {
-              await anto.reply(from, `Wrong Format!\n[❗] Kirim perintah *!nulis [ |Teks1|namalu|kelaslu ]*, contoh *!nulis |Pengertian Janda|anto|XI.MIPA4*`, id)
-            }
-            break
+             /*   case '!nulis':
+                  if (args.length === 1) return anto.reply(from, 'Kirim perintah *!nulis [teks]*', id)
+                  const nulis = encodeURIComponent(body.slice(7))
+                  anto.reply(from, mess.wait, id)
+                  let urlnulis = `http://melodicxt-api.herokuapp.com/api/joki-nulis?text=${nulis}&apiKey=administrator`
+                  await fetch(urlnulis, {method: "GET"})
+                  .then(result => result.json())
+                  .then(async (json) => {
+                      await anto.sendFileFromUrl(from, json.result, 'Nulis.jpg', 'Nih anjim', id)
+                  }).catch(e => anto.reply(from, "Error: "+ e));
+                  break*/
      /*   case '!nulis':  
           if(isReg(obj)) return
             if(cekumur(cekage)) return
@@ -1847,7 +1836,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
         if (ngetikk.data.error) return anto.reply(from, ngetikk.data.error, id)
         anto.sendFileFromUrl(from, ngetikk.data.result, 'nulis.jpg', '', id)
         break 
-     /*   case '!nulis':
+       case '!nulis':
             if(isReg(obj)) return
             if(cekumur(cekage)) return
             if (args.length === 1) return anto.reply(from, 'Kirim perintah *!nulis [teks]*', id)
@@ -1860,6 +1849,34 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
                 await anto.sendFileFromUrl(from, json.result, 'Nulis.jpg', 'Nih anjim', id)
             }).catch(e => anto.reply(from, "Error: "+ e));
             break*/
+            case '!cuaca':
+              if(isReg(obj)) return
+              if(cekumur(cekage)) return
+              if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
+           //   if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik ${prefix}limit Untuk Mengecek Kuota Limit Kamu`, id)
+              if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#cuaca [tempat]*\nContoh : *#cuaca tangerang', id)
+              const tempat = body.slice(7)
+              const weather = await axios.get('http://melodicxt.herokuapp.com/api/cuaca?query='+ tempat +'&apiKey='+ melodickey)
+              const weatherr = weather.data
+              if (weatherr.error) {
+                  tobz.reply(from, weatherr.error, id)
+              } else {
+                  tobz.reply(from, `➸ Tempat : ${weatherr.result.tempat}\n\n➸ Angin : ${weatherr.result.angin}\n➸ Cuaca : ${weatherr.result.cuaca}\n➸ Deskripsi : ${weatherr.result.desk}\n➸ Kelembapan : ${weatherr.result.kelembapan}\n➸ Suhu : ${weatherr.result.suhu}\n➸ Udara : ${weatherr.result.udara}`, id)
+                 // limitAdd(serial)
+              }
+              break
+            case '!nulis':
+            if(isReg(obj)) return
+            if(cekumur(cekage)) return
+            if (!isGroupMsg) return anto.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
+          //  if (isLimit(serial)) return anto.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik ${prefix}limit Untuk Mengecek Kuota Limit Kamu`, id)
+            if (args.length === 1) return anto.reply(from, 'Kirim perintah *#nulis [teks]*, contoh *#nulis aku bukan boneka*', id)
+            const ngettik = body.slice(7)
+            const ngetikk = await axios.get('http://melodicxt.herokuapp.com/api/joki-nulis?text='+ ngettik+'&apiKey='+ melodickey)
+            if (ngetikk.data.error) return anto.reply(from, ngetikk.data.error, id)
+            anto.sendFileFromUrl(from, ngetikk.data.result, 'nulis.jpg', '', id)
+       //     await limitAdd(serial)
+            break
         case '!ytmp3':
               if(isReg(obj)) return
             if(cekumur(cekage)) return
@@ -1912,7 +1929,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
             if (!isLin) return anto.reply(from, mess.error.Iv, id)
             try {
                 anto.reply(from, mess.wait, id)
-                const ytvh = await fetch(`http://melodicxt.herokuapp.comapi/youtubemp4-downloader?url=${args[1]}&apiKey=administrator`)
+                const ytvh = await fetch(`http://melodicxt-api.herokuapp.comapi/youtubemp4-downloader?url=${args[1]}&apiKey=administrator`)
                 if (!ytvh.ok) throw new Error(`Error Get Video : ${ytvh.statusText}`)
                 const ytvh2 = await ytvh.json()
                  if (ytvh2.status == false) {
@@ -1943,18 +1960,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
                 anto.reply(from, `➸ *Query* : ${query_}\n\n➸ *Result* : ${wiki.result}`, id)
             }
             break
-        case '!cuaca':
-              if(isReg(obj)) return
-            if(cekumur(cekage)) return
-            if (args.length === 1) return anto.reply(from, 'Kirim perintah *!cuaca [tempat]*\nContoh : *!cuaca tangerang', id)
-            const tempat = body.slice(7)
-            const weather = await get.get(`https://mhankbarbars.herokuapp.com/api/cuaca?q=${tempat}&apiKey=${apiKey}`).json()
-            if (weather.error) {
-                anto.reply(from, weather.error, id)
-            } else {
-                anto.reply(from, `➸ Tempat : ${weather.result.tempat}\n\n➸ Angin : ${weather.result.angin}\n➸ Cuaca : ${weather.result.cuaca}\n➸ Deskripsi : ${weather.result.desk}\n➸ Kelembapan : ${weather.result.kelembapan}\n➸ Suhu : ${weather.result.suhu}\n➸ Udara : ${weather.result.udara}`, id)
-            }
-            break
+        
         case '!fb':
               if(isReg(obj)) return
             if(cekumur(cekage)) return
@@ -2079,7 +2085,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
            if(cekumur(cekage)) return
            const wurl = boy.slice(7)
            const ss = await axios.get(`https://melodicxt.herokuapp.com/api/ssweb?url=${wurl}&apiKey=administrator`)
-           anto.sendFilefromUrl(from, ss.data.result, 'webiste.jpg', 'nehh', id)
+           anto.sendFileFromUrl(from, ss.data.result, 'webiste.jpg', 'nehh', id)
            break
         case '!welcome':
               if(isReg(obj)) return
@@ -2105,7 +2111,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
             if (!isNsfw) return
             anto.reply(from, '1. !randomHentai\n2. !randomNsfwNeko', id)
             break
-        /* case '!igstalk':
+      /* case '!igstalk':
           //  if(isReg(obj)) return
          //   if(cekumur(cekage)) return
             if (!isGroupMsg) return anto.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
@@ -2118,7 +2124,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
             const istalk = await slicedArgs.join(' ')
             console.log(istalk)
             try {
-            const istalk2 = await axios.get(`http://melodicxt.herokuapp.com/api/igprofile?user=${istalk}&apiKey=administrator`)
+            const istalk2 = await axios.get(`http://melodicxt-api.herokuapp.com/api/igprofile?user=${istalk}&apiKey=administrator`)
             const { Bio, Followers_count, Following_count, Name, Post_count, Profile_picture, Story_count, Story_url} = istalk2.data
             const istalk3 = `╔════════════════════
 ║╭──❉[ *SUCCES * ]❉──
@@ -2138,8 +2144,8 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
              await anto.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Maaf, User tidak ditemukan')
              anto.sendText(ownerNumber, 'Igstalk Error : ' + err)
            }
-          break*/
-         /* case '!natal':
+          break
+          case '!natal':
           //  if(isReg(obj)) return
           //   if(cekumur(cekage)) return
           if (!isGroupMsg) return anto.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
@@ -2152,7 +2158,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
           const natal = await slicedArgs.join(' ')
           console.log(natal)
           try {
-            const chritmash = await axios.get(`http://zeksapi.herokuapp.com/api/crismes?text=${natal}&apikey=zerotwo`)
+            const chritmash = await axios.get(`http://zeksapi.harispoppy.com/api/crismes?text=${natal}&apikey=zerotwo`)
             const { result} = chritmash2.data
             const chritmash3 = 'Dah Jadi'
           
@@ -2165,11 +2171,11 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
             anto.sendText(ownerNumber, 'Igstalk Error : ' + err)
           }
           break*/
-        case '!igstalk':
+     /*   case '!igstalk':
               if(isReg(obj)) return
             if(cekumur(cekage)) return
             if (args.length === 1)  return anto.reply(from, 'Kirim perintah *!igStalk @username*\nConntoh *!igStalk @duar_amjay*', id)
-            const stalk = await get.get(`http://zeksapi.herokuapp.com/api/igstalk?username=${args[1]}&apikey=zerotwo`).json()
+            const stalk = await get.get(`http://zeksapi.harispoppy.com/api/igstalk?username=${args[1]}&apikey=zerotwo`).json()
             if (stalk.error) return anto.reply(from, stalk.error, id)
             const { bio, fullname, follower, following, is_verified, is_private, is_bussiness, username, Profile_pic } = stalk
             const caps = `_________________
@@ -2192,7 +2198,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
             const { potensi, koordinat, lokasi, kedalaman, magnitude, waktu, map } = bmkg
             const hasil = `*${waktu}*\n📍 *Lokasi* : *${lokasi}*\n〽️ *Kedalaman* : *${kedalaman}*\n💢 *Magnitude* : *${magnitude}*\n🔘 *Potensi* : *${potensi}*\n📍 *Koordinat* : *${koordinat}*`
             anto.sendFileFromUrl(from, map, 'shakemap.jpg', hasil, id)
-            break
+            break*/
         case '!anime':
               if(isReg(obj)) return
             if(cekumur(cekage)) return
@@ -2633,7 +2639,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
             anto.reply(from, mess.wait, id)
             const stopcoli = body.slice(7)
             if (stopcoli.length > 10) return anto.reply(from, '*Teks Terlalu Panjang!*\n_Maksimal 10 huruf!_', id)
-            const wolt = await axios.get(`http://melodicxt.herokuapp.com/api/txtcustom?theme=dropwater&text=${stopcoli}&apiKey=administrator`)
+            const wolt = await axios.get(`http://melodicxt-api.herokuapp.com/api/txtcustom?theme=dropwater&text=${stopcoli}&apiKey=administrator`)
             anto.sendFileFromUrl(from, wolt.data.result, 'water.jpg', 'nehh', id)
             break
             
@@ -2667,7 +2673,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
               const logo2 = argz[2]
               if (logo1.length > 10) return anto.reply(from, '*Teks1 Terlalu Panjang!*\n_Maksimal 10 huruf!_', id)
               if (logo2.length > 10) return anto.reply(from, '*Teks2 Terlalu Panjang!*\n_Maksimal 10 huruf!_', id)
-             const wody = await axios.get(`http://melodicxt.herokuapp.com/api/txtcustom?theme=wolf_galaxy&text1=${logo1}&text2=${logo2}&apiKey=administrator`)
+             const wody = await axios.get(`http://melodicxt-api.herokuapp.com/api/txtcustom?theme=wolf_galaxy&text1=${logo1}&text2=${logo2}&apiKey=administrator`)
             anto.sendFileFromUrl(from, wody.data.result, 'wolf.jpg', id)
               //await limitAdd(serial)
             } else {
@@ -2753,7 +2759,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
               if(isReg(obj)) return
               if(cekumur(cekage)) return
               const fuck = await get.get('https://docs-jojo.herokuapp.com/api/fml').json()
-              anto.sendFilefromUrl(from, fuck.result, id)
+              anto.sendFileFromUrl(from, fuck.result, id)
               break
             case 'logoninja': 
         case '!logoninja':
@@ -2761,14 +2767,14 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
             //if (isLimit(serial)) return anto.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis/nJika Ingin Isi Ulang Chat Owner!/nKetik #limit Untuk Mengecek Kuota Limit Kamu`, id)
             if (args.length === 1) return anto.reply(from, `Kirim perintah *!logoninja  |Teks1|Teks2*, contoh *!logoninja  |Teks1|Teks2*`, id)
             argz = body.trim().split('|')
-            if (argz.length >= 3) {
+            if (argz.length >= 2) {
                 anto.reply(from, 'Tinggu ya kak lagi proses', id)
                 const ninja1 = argz[1]
                 const ninja2 = argz[2]
                 if (ninja1.length > 8) return anto.reply(from, '*Teks1 Terlalu Panjang!*\n_Maksimal 8 huruf!_', id)
                 if (ninja2.length > 8) return anto.reply(from, '*Teks2 Terlalu Panjang!*\n_Maksimal 8 huruf!_', id) 
-                const bfr =(`https://tobz-api.herokuapp.com/api/textpro?theme=ninjalogo&text1=${ninja1}&text2=${ninja2}`)
-                anto.sendFilefromUrl(from, bfr, 'ninja.jpg', 'Neeh', id)
+                const bfr = await get.get(`https://tobz-api.herokuapp.com/api/textpro?theme=ninjalogo&text1=${ninja1}&text2=${ninja2}`).json()
+                anto.sendFileFromUrl(from, bfr.result, 'ninja.jpg', 'Neeh', id)
             //  await limitAdd(serial)
             } else {
                 await anto.reply(from, `Wrong Format!\n[❗] Kirim perintah *!ninja  |Teks1|Teks2*, comntoh *!ninja |Anto|Bot*`, id)
@@ -2781,7 +2787,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
             // const tmpt2 = arg.split(' | ')[1]
              const blackpink = await axios.get(`https://turu-rest.herokuapp.com/blackpink?text=${tmpt1}`)
               .then(result => {
-              anto.sendFilefromUrl(from, result.data.result, 'blackpink.jpg', '', message.id)
+              anto.sendFileFromUrl(from, result.data.result, 'blackpink.jpg', '', message.id)
                 }).catch(err => {
                 return console.error(err)
                  })
@@ -2793,7 +2799,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
              const thyt2 = arg.split(' | ')[1]
              const wolf = await axios.get(`https://tobz-api.herokuapp.com/api/textpro?theme=wolflogo1&text1=${thyt1}&text2=${thyt2}`)
               .then(result => {
-              anto.sendFilefromUrl(from, result.data.result, 'wolf.jpg', '', message.id)
+              anto.sendFileFromUrl(from, result.data.result, 'wolf.jpg', '', message.id)
                 }).catch(err => {
                 return console.error(err)
                  })
@@ -2804,30 +2810,26 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
              const tert2 = arg.split(' | ')[1]
              const pornhub = await axios.get(`https://turu-rest.herokuapp.com/pornhub?text1=${tert1}&text2=${tert2}`)
               .then(result => {
-              anto.sendFilefromUrl(from, result.data.result, 'pornhub.jpg', '', message.id)
+              anto.sendFileFromUrl(from, result.data.result, 'pornhub.jpg', '', message.id)
                 }).catch(err => {
                 return console.error(err)
                  })
                 break*/
             case '!neon':
-             const text7 = arg.split(' | ')[0]
-             //const text2 = arg.split(' | ')[1]
-             const neon = await axios.get(`https://turu-rest.herokuapp.com/neon?text=${text7}`)
-              .then(result => {
-              anto.sendFilefromUrl(from, neon.data.result, 'neon.jpg', '', id)
-                }).catch(err => {
-                return console.error(err)
-                 })
+             const text7 = body.slice(6)
+             //const text2 = arg.split(' | ')[1]gi
+             anto.reply(from, mess.wait, id)
+             const neon = await get.get(`https://turu-rest.herokuapp.com/neon?text=${text7}`).json()
+             await anto.sendFileFromUrl(from, neon.result, 'neon.jpg', 'nehh', id)  
                 break
             case '!glow':
             if (args.length == 0) return anto.reply(from, 'Contoh: !glow text', id)
-             //const text8 = arg.split(' | ')[0]
+             //const text8 = arg.split(' | ')
              //const text9 = arg.split(' | ')[1]
-             const bab3 = body.slice(7)
-             const glow = await axios.get(`https://turu-rest.herokuapp.com/glow?text=${bab3}`)
-              anto.sendFilefromUrl(from, glow.data.result, 'glow.jpg', '', id)
-                break
-         
+             const bab3 = body.slice(6)
+             const glow = await get.get(`https://turu-rest.herokuapp.com/glow?text=${bab3}`).json()
+             await anto.sendFileFromUrl(from, glow.result, 'neon.jpg', 'nehh', id)
+              break
             case '!glitch':
             case '!gltext':
             if (isReg(obj)) return
@@ -2847,39 +2849,40 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
                await anto.reply(from, `Wrong Format!\n[❗] Kirim perintah *!glitch [ |Teks1|Teks2 ]*, contoh *!glitch |ANTO|SOLEH*`, id)
              }
              break
-             case '!neongreen':
+              case '!neongreen':
                if(isReg(obj)) return
                if(cekumur(cekage)) return
                anto.reply(from, mess.wait, id)
-               const green = body.slice(12)
-               const gren = await axios.get(`http://melodicxt.herokuapp.com/api/txtcustom?theme=${green}&text=MelodicXT&apiKey=administrator`)
-               anto.sendFilefromUrl(from, gren.data.result, 'green.jpg', 'Nehh', id)
+               const green = body.slice(11)
+               const gren = await get.get(`http://melodicxt-api.herokuapp.com/api/txtcustom?theme=green_neon&text=${green}&apiKey=administrator`).json()
+               anto.sendFileFromUrl(from, gren.result, 'green.jpg', 'Nehh', id)
                break
            
              case '!pasir':
                if(isReg(obj)) return
                if(cekumur(cekage)) return
                anto.reply(from, mess.wait, id)
-               const psir = body.slice(8)
-               const pasr = await get.get(`http://melodicxt.herokuapp.com/api/txtcustom?theme=sand_engraved&text=${psir}&apiKey=administrator`).json
-              await anto.sendFilefromUrl(from, pasr.result, 'pasir.jpg', id)
+               const psir = body.slice(7)
+               const pasr = await get.get(`http://melodicxt-api.herokuapp.com/api/txtcustom?theme=sand_engraved&text=${psir}&apiKey=administrator`).json()
+              await anto.sendFileFromUrl(from, pasr.result, 'pasir.jpg', 'nehh', id)
                break
+         
              case '!natal':
                if (isReg(obj)) return
                if(cekumur(cekage)) return
                anto.reply(from, mess.wait, id)
-               const ntl = body.slice(8)
-               const ntal = await get.get(`http://zeksapi.herokuapp.com/api/crismes?text=${ntl}&apikey=zerotwo`).json()
-               await anto.sendFilefromUrl(from, ntal.result, 'natal.jpg', 'nehh boss', id)
+               const ntl = body.slice(7)
+               const ntal = await get.get(`http://zeksapi.harispoppy.com/api/crismes?text=${ntl}&apikey=zerotwo`).json()
+               await anto.sendFileFromUrl(from, ntal.result, 'natal.jpg', 'nehh boss', id)
                break
                // new logo \\
           case '!metaltext':
             if(isReg(obj)) return
             if(cekumur(cekage)) return
             anto.reply(from, mess.wait, id)
-            const mtal = body.slice(12)
-            const metal = await axios.get(`http://melodicxt.herokuapp.com/api/txtcustom?theme=${mtal}&text=MelodicXT&apiKey=administrator`)
-            await anto.sendFilefromUrl(from, metal.result, 'metal.jpg', 'Nehh boss', id)
+            const mtal = body.slice(11)
+            const metal = await get.get(`http://melodicxt-api.herokuapp.com/api/txtcustom?theme=metal_dark_gold&text=${mtal}&apiKey=administrator`).json()
+            await anto.sendFileFromUrl(from, metal.result, 'metal.jpg', 'Nehh boss', id)
             break
           case '!mememaker':
           if (isReg(obj)) return
@@ -2889,34 +2892,157 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
           argz = body.trim().split('|')
           if (argz.length >= 2) {
             anto.reply(from, mess.wait, id)
-            const logom5 = argz[1]
-            const logom6 = argz[2]
-            if (logom5.length > 10) return anto.reply(from, '*Teks1 Terlalu Panjang!*\n_Maksimal 10 huruf!_', id)
-            if (logom6.length > 10) return anto.reply(from, '*Teks2 Terlalu Panjang!*\n_Maksimal 10 huruf!_', id)
-            const macker = await get.get(`http://melodicxt.herokuapp.com/api/txtcustom?theme=marvel_studio&text1=${logom5}&text2=${logom6}&apiKey=administrator`).json()
-           await anto.sendFileFromUrl(from, macker.result, 'neh.jpg', 'Neh', id)
+            const atase = argz[1]
+            const bawae = argz[2]
+            if (atase.length > 10) return anto.reply(from, '*Teks1 Terlalu Panjang!*\n_Maksimal 10 huruf!_', id)
+            if (bawae.length > 10) return anto.reply(from, '*Teks2 Terlalu Panjang!*\n_Maksimal 10 huruf!_', id)
+            const macker = await get.get(`http://melodicxt-api.herokuapp.com/api/meme-maker?url=https://i.ibb.co/QXqY76v/Image-rtb.jpg&text=${atase}|${bawae}`).json()
+           await anto.sendFileFromUrl(from, macker.result.result, 'neh.jpg', 'Neh', id)
             //await limitAdd(serial)
           } else {
             await anto.reply(from, `Wrong Format!\n[❗] Kirim perintah *!mememaker [ |Teks1|Teks2 ]*, contoh *!mememaker |ANTOK|SOLEH*`, id)
           }
           break
+
           case '!jokertext':
           if(isReg(obj)) return
           if(cekumur(cekage)) return
           anto.reply(from, mess.wait, id)
-          const lay = body.slice(12)
-          const laylay = await get.get(`http://melodicxt.herokuapp.com/api/txtcustom?theme=joker&text=${lay}&apiKey=administrator`).json()
-         await anto.sendFilefromUrl(from, laylay.result, 'laylay.jpg', 'Nehh mnhank', id)
-          break
-          case '!goldbutton':
+          const lay = body.slice(11)
+          const laylay = await get.get(`http://melodicxt-api.herokuapp.com/api/txtcustom?theme=joker&text=${lay}&apiKey=administrator`).json()
+        // console.log(laylay.body)
+          await anto.sendFileFromUrl(from, laylay.result, 'joker.jpg', 'nehh', id)
+              break
+          case '!silverbutton':
             if(isReg(obj)) return
             if(cekumur(cekage)) return
 //		if (isLimit(serial)) return
     anto.reply(from, mess.wait, id)
-    const vinbab = body.slice(13)
+    const vinbab = body.slice(14)
 		const silver = await get.get(`https://zeksapi.harispoppy.com/api/splaybutton?text=${vinbab}&apikey=apivinz`).json()
 		await anto.sendFileFromUrl(from, silver.result, 'silver.jpg', 'Neh bwang',id)
-		break
+    break
+   
+case '!checkip':
+      if(isReg(obj)) return
+      if(cekumur(cekage)) return
+      if (!isGroupMsg) return anto.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
+     // if (isLimit(serial)) return anto.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik ${prefix}limit Untuk Mengecek Kuota Limit Kamu`, id)
+      if (args.length === 1) return anto.reply(from, 'Kirim perintah *#checkip [ipaddress]*\nContoh : *#checkip 182.0.144.145*', id)
+      anto.reply(from, mess.wait, id)
+      argz = body.trim().split(' ')
+      console.log(...argz[1])
+      var slicedArgs = Array.prototype.slice.call(arg, 1);
+      console.log(slicedArgs)
+      const cekip = await slicedArgs.join(' ')
+      console.log(cekip)
+      try {
+      const cekip2 = await axios.get('https://mnazria.herokuapp.com/api/check?ip=' + cekip)
+      const { city, continent_name, country_name, ip, latitude, location, longitude, region_name } = cekip2.data
+      const cekip3 = `*User Ditemukan!*
+
+➸ *Kota:* ${city}
+➸ *Benua:* ${continent_name}
+➸ *Negara:* ${country_name}
+➸ *Ip Address:* ${ip}
+➸ *Garis Lintang:* ${latitude}
+➸ *Kode Telepon:* +${location.calling_code}
+➸ *Ibu Kota:* +${location.capital}
+➸ *Bahasa:* +${location.languages[0].name}
+➸ *Garis Bujur:* ${longitude}
+➸ *Wilayah:* +${region_name}`
+
+      const pictk = await bent("buffer")(location.country_flag)
+      const base64 = `data:image/jpg;base64,${pictk.toString("base64")}`
+      anto.sendImage(from, base64, city, cekip3)
+   //   await limitAdd(serial)
+      } catch (err) {
+       console.error(err.message)
+       await anto.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Maaf, User tidak ditemukan')
+       anto.sendText(ownerNumber, 'Error Check IP : '+ err)
+     }
+    break
+case '!twitterstalk':
+  case '!twtstalk':
+      if(isReg(obj)) return
+      if(cekumur(cekage)) return
+      if (!isGroupMsg) return anto.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
+    //  if (isLimit(serial)) return anto.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik ${prefix}limit Untuk Mengecek Kuota Limit Kamu`, id)
+      if (args.length === 1)  return anto.reply(from, 'Kirim perintah *#twtstalk @username*\nContoh *#twtstalk @miakhalifah*', id)
+      argz = body.trim().split(' ')
+      console.log(...argz[1])
+      var slicedArgs = Array.prototype.slice.call(arg, 1);
+      console.log(slicedArgs)
+      const twstalk = await slicedArgs.join(' ')
+      console.log(twstalk)
+      try {
+      const twstalk2 = await axios.get('http://melodicxt.herokuapp.com/api/twtprofile?user=' + twstalk + '&apiKey=' + melodickey)
+      const { created_at, user } = twt.result[0]
+const twtz = `*「 TWITTER PROFILE 」*
+
+• *Username:* @${user.screen_name}
+• *Nama:* ${user.name}
+• *Deskripsi:* ${user.description}
+• *Pengikut:* ${user.followers_count}
+• *Mengikuti*: ${user.friends_count}
+• *Jumlah Favorite:* ${user.favourites_count}
+• *Jumlah Status:* ${user.statuses_count}
+• *Dibuat:* ${created_at}
+• *Link:* https://twitter.com/${user.screen_name}`
+
+      const pictk = await bent("buffer")(user.profile_image_url)
+      const base64 = `data:image/jpg;base64,${pictk.toString("base64")}`
+      anto.sendImage(from, base64, name, twtz)
+  //    await limitAdd(serial)
+      } catch (err) {
+       console.error(err.message)
+       await anto.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Maaf, User tidak ditemukan')
+       anto.sendText(ownerNumber, 'Twitter Error : ' + err)
+     }
+    break
+     // real //
+  case '!igstalk':
+      if(isReg(obj)) return
+      if(cekumur(cekage)) return
+      if (!isGroupMsg) return anto.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
+    //  if (isLimit(serial)) return anto.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik ${prefix}limit Untuk Mengecek Kuota Limit Kamu`, id)
+      if (args.length === 1)  return anto.reply(from, 'Kirim perintah *#igstalk @username*\nContoh *#igstalk duar_amjay*', id)
+      argz = body.trim().split(' ')
+      console.log(...argz[1])
+      var slicedArgs = Array.prototype.slice.call(arg, 1);
+      console.log(slicedArgs)
+      const istalk = await slicedArgs.join(' ')
+      console.log(istalk)
+      try {
+      const istalk2 = await axios.get('https://tobz-api.herokuapp.com/api/stalk?username=' + istalk)
+      const { Biodata, Jumlah_Followers, Jumlah_Following, Profile_pic, Jumlah_Post, Name, Username } = istalk2.data
+      const istalk3 = `*User Ditemukan!*
+
+➸ *Username:* ${Username}
+➸ *Nama:* ${Name}
+➸ *Bio:* ${Biodata}
+➸ *Mengikuti:* ${Jumlah_Following}
+➸ *Pengikut:* ${Jumlah_Followers}
+➸ *Jumlah Postingan:* ${Jumlah_Post}`
+
+      const pictk = await bent("buffer")(Profile_pic)
+      const base64 = `data:image/jpg;base64,${pictk.toString("base64")}`
+      anto.sendImage(from, base64, Username, istalk3)
+  //    await limitAdd(serial)
+      } catch (err) {
+       console.error(err.message)
+       await anto.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Maaf, User tidak ditemukan')
+       anto.sendText(ownerNumber, 'Igstalk Error : ' + err)
+     }
+    break
+    case '!goldbutton':
+      if(isReg(obj)) return
+      if(cekumur(cekage)) return
+      anto.reply(from, mess.wait, id)
+      const gold = body.slice(12)
+      const golden = await get.get(`https://zeksapi.harispoppy.com/api/gplaybutton?text=${gold}&apikey=zerotwo`).json()
+       anto.sendFileFromUrl(from, golden.result, 'gold.jpg', 'omedetou', id)
+       break
           case '!marvel':
           if (isReg(obj)) return
           if (cekumur(cekage)) return
@@ -2929,7 +3055,7 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
             const logom4 = argz[2]
             if (logom3.length > 10) return anto.reply(from, '*Teks1 Terlalu Panjang!*\n_Maksimal 10 huruf!_', id)
             if (logom4.length > 10) return anto.reply(from, '*Teks2 Terlalu Panjang!*\n_Maksimal 10 huruf!_', id)
-            const mrvl = await axios.get(`http://melodicxt.herokuapp.com/api/txtcustom?theme=marvel_studio&text1=${logom3}&text2=${logom4}&apiKey=administrator`)
+            const mrvl = await axios.get(`http://melodicxt-api.herokuapp.com/api/txtcustom?theme=marvel_studio&text1=${logom3}&text2=${logom4}&apiKey=administrator`)
             anto.sendFileFromUrl(from, mrvl.data.result, 'wolf.jpg', 'Neh', id)
             //await limitAdd(serial)
           } else {
@@ -2941,8 +3067,8 @@ Total Pengguna yang telah terdaftar ${pendaftar.length}`)
           if(isReg(obj)) return
           if(cekumur(cekage)) return
           const awan = body.slice(8)
-          const cloudy = await get.get(`http://melodicxt.herokuapp.com/api/txtcustom?theme=sky_online&text=${awan}&apiKey=administrator`).json()
-          anto.sendFilefromUrl(from, cloudy.result, 'awan.jpg', 'Nihh boss', id)
+          const cloudy = await get.get(`http://melodicxt-api.herokuapp.com/api/txtcustom?theme=sky_online&text=${awan}&apiKey=administrator`).json()
+          anto.sendFileFromUrl(from, cloudy.result, 'awan.jpg', 'Nihh boss', id)
           break
           
      /*   case '!waifu':
